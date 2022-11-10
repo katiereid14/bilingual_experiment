@@ -16,12 +16,13 @@
     <link href="https://unpkg.com/jspsych@7.1.2/css/jspsych.css" rel="stylesheet" type="text/css" />
     
     <script src="list1.js"></script>
-    <script src="images.js"></script>
-    <!--
-    <script src="practice_stimuli.js"></script>
     <script src="list2.js"></script>
     <script src="list3.js"></script>
     <script src="list4.js"></script>
+    <script src="images.js"></script>
+    <!--
+    <script src="practice_stimuli.js"></script>
+    
     
     -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
@@ -74,8 +75,6 @@ var ID = {
       subject_id = data.response.ID
 }
   };
-
-
 
 var instructions1 = {
   type: jsPsychHtmlButtonResponse,
@@ -221,8 +220,18 @@ trial_duration: function(){
   //timeline.push(instructions1);
   //timeline.push(instructions2);
   
-  
-  var teststimuli = list1
+  var list = [1,2,3,4]
+  var CONDITION = list[Math.floor(Math.random() * list.length)];
+  var teststimuli = []
+
+  if(CONDITION == 1){teststimuli = list1}
+  else if(CONDITION == 2){teststimuli = list2}
+  else if(CONDITION == 3){teststimuli = list3}
+  else{teststimuli = list4}
+
+  console.log("list=", list)
+  console.log("CONDITION=", CONDITION)
+  console.log("teststimuli=", teststimuli)
 
   var order = ["english", "spanish"]
 
@@ -258,8 +267,6 @@ trial_duration: function(){
     timeline.push(lang_proc)
 
     }
-
-  
 
   
   var endexperiment = {
