@@ -168,14 +168,14 @@ var instructions2 = {
 
   var picture = {
     type: jsPsychImageKeyboardResponse,
-    stimulus: jsPsych.timelineVariable('pic _name'),
+    stimulus: jsPsych.timelineVariable('pic_name'),
     choices: ['S', 'N', 's', 'n'],
     data: {
         typeoftrial: 'picture',
         List: jsPsych.timelineVariable('List'),
         trialcondition: jsPsych.timelineVariable('trialcondition'),
         sentence: jsPsych.timelineVariable('sentence'),
-        object:jsPsych.timelineVariable('pic'),
+        object:jsPsych.timelineVariable('pic_name'),
         index:jsPsych.timelineVariable('index'),
         subject: subject_id
       },
@@ -268,7 +268,6 @@ trial_duration: function(){
 
     }
 
-  
   var endexperiment = {
       type: jsPsychHtmlButtonResponse,
       stimulus: function(){
