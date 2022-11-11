@@ -20,11 +20,10 @@
     <script src="list3.js"></script>
     <script src="list4.js"></script>
     <script src="images.js"></script>
-    <!--
     <script src="practice_stimuli.js"></script>
     
     
-    -->
+  
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
   </head>
   <body></body>
@@ -167,7 +166,7 @@ var preload = {
 
   var picture = {
     type: jsPsychImageKeyboardResponse,
-    stimulus: jsPsych.timelineVariable('pic_name'),
+    stimulus: jsPsych.timelineVariable('imagelist'),
     choices: ['S', 'N', 's', 'n'],
     data: {
         typeoftrial: 'picture',
@@ -196,13 +195,13 @@ trial_duration: function(){
   else{return 4000}
 }
 }
-/*
+
     var practice_procedure = {
     timeline: [fixation1, sentence, fixation2, picture, feedback],
     timeline_variables: practicestimuli,
     randomize_order: true
   };
-  */  
+    
 
 
   var movetoexp = {
