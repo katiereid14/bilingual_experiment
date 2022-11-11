@@ -177,7 +177,20 @@ var preload = {
         index:jsPsych.timelineVariable('index'),
         subject: subject_id
       },
-  prompt: '<br>S (yes)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;N (no)'
+  prompt: '<br>S (yes)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;N (no)',
+  on_finish: function(data){
+    // for comprehension
+    last_trial_condition = data.trialcondition 
+    last_trial_index = data.index
+  // Score the response as correct or incorrect.
+  if(jsPsych.pluginAPI.compareKeys(data.response, jsPsych.timelineVariable('correct'))){
+    data.correct = true;
+    
+  } else {
+    data.correct = false; 
+  }
+}
+  
   }
 
 var correct = 0;
@@ -260,7 +273,7 @@ trial_duration: function(){
         choices: ['Continue'],
     };
 
-    timeline.push(lang_info_trial) 
+    
 
     var lang_proc = {
       timeline: [fixation1, sentence, fixation2, picture],
@@ -268,7 +281,7 @@ trial_duration: function(){
       randomize_order: true
     }
 
-    timeline.push(lang_proc)
+    
 
     }
 
@@ -389,17 +402,18 @@ var endexperiment = {
   };
 
   // add everything to timeline
-  /*timeline.push(preload);*/
+  timeline.push(preload);
   timeline.push(consent_trial);
-  /*timeline.push(ID);
+  timeline.push(ID);
   timeline.push(instructions1);
   timeline.push(instructions2);
-  /*timeline.push(practice_procedure)
+  timeline.push(practice_procedure);
   timeline.push(movetoexp);
+  timeline.push(lang_info_trial);
   timeline.push(test_procedure);
   timeline.push(demoinstructions)
   timeline.push(demo_procedure);
-  timeline.push(endexperiment);*/
+  timeline.push(endexperiment);
 
   
   jsPsych.run(timeline);
